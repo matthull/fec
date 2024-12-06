@@ -1,0 +1,49 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  committee_id: 1
+  committee_name: MyString
+  report_year: 1
+  entity_type: MyString
+  entity_type_desc: MyString
+  recipient_name: MyString
+  beneficiary_committee_name: MyString
+  memo_code: MyString
+  memo_code_full: MyString
+  disbursement_type: MyString
+  disbursement_type_name: MyString
+  disbursement_date: 2024-12-06 12:25:04
+  disbursement_amount: 9.99
+  fec_election_type: MyString
+  payee_last_name: MyString
+  payee_first_name: MyString
+  recipient_city: MyString
+  recipient_zip: 1
+  disbursement_purpose_category: MyString
+  pdf_url: MyString
+  line_number_label: MyString
+  report_type: MyString
+
+two:
+  committee_id: 1
+  committee_name: MyString
+  report_year: 1
+  entity_type: MyString
+  entity_type_desc: MyString
+  recipient_name: MyString
+  beneficiary_committee_name: MyString
+  memo_code: MyString
+  memo_code_full: MyString
+  disbursement_type: MyString
+  disbursement_type_name: MyString
+  disbursement_date: 2024-12-06 12:25:04
+  disbursement_amount: 9.99
+  fec_election_type: MyString
+  payee_last_name: MyString
+  payee_first_name: MyString
+  recipient_city: MyString
+  recipient_zip: 1
+  disbursement_purpose_category: MyString
+  pdf_url: MyString
+  line_number_label: MyString
+  report_type: MyString
