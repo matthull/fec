@@ -1,24 +1,8 @@
-# README
+# Campaign Spending Breakdown
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+App for analyzing disbursements data from [FEC](https://www.fec.gov/data/disbursements/?two_year_transaction_period=2024&committee_id=C00847400&data_type=processed)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# TODO
+- [ ] Budget breakdown visualization (sunburst? drilldown to show page or maybe sample data on mouseover?)
+- [ ] Chloropleth of spending geography
+- [ ] Mappings show page
