@@ -1,0 +1,10 @@
+<h1>Custom Disbursement Type Mappings</h1>
+
+<p>FEC election finance data provides a "disbursement description" for each expenditure. We group those into "custom disbursement type"s
+so we can better understand spending patterns.</p>
+
+<p>Below are our mappings, with the FEC description on the left and our custom type on the right.</p>
+
+<% @mappings.each do |description, type| -%>
+  <p><%= description %>: <%= type %></p>
+<% end -%>

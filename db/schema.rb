@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_06_182504) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_16_221825) do
   create_table "disbursements", force: :cascade do |t|
     t.integer "committee_id"
     t.string "committee_name"
@@ -36,5 +36,9 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_06_182504) do
     t.string "report_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "custom_disbursement_type"
+    t.string "disbursement_description"
+    t.string "transaction_id"
+    t.string "custom_disbursement_subtype"
   end
 end

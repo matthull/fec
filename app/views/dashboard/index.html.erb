@@ -1,2 +1,11 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<%= javascript_tag type: 'application/javascript' do -%>
+  window.rawDisbursements = <%= raw @disbursements.to_json %>
+<% end -%>
+<h1>Gloria Johnson - US Senate Race Disbursements - 2024</h1>
+<div class="dashboard">
+  <div id="sankey-container"></div>
+</div>
+
+<% @type_stats.sort_by(&:last).reverse.each do |stat| -%>
+  <p><%= stat[0] %>: <%= number_to_currency stat[1].round %></p>
+<% end -%>
