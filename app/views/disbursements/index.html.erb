@@ -1,0 +1,35 @@
+<%= turbo_refreshes_with method: :morph, scroll: :preserve %>
+
+<div class="max-w-7xl mx-auto mt-12">
+  <div class="shadow overflow-hidden rounded border-b border-gray-200">
+    <table class="min-w-full bg-white">
+      <thead class="bg-gray-800 text-white">
+        <tr>
+          <th id="disbursements-category" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
+            <%= sort_link(column: "disbursement_description", label: "Description") %>
+          </th>
+          <th id="disbursements-subtype" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
+            <%= sort_link(column: "custom_disbursement_subtype", label: "Subtype") %>
+          </th>
+          <th id="disbursements-type" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer">
+            <%= sort_link(column: "custom_disbursement_type", label: "Type") %>
+          </th>
+          <th>
+            <span>Amount</span>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="text-gray-700">
+        <% @disbursement.each do |disbursement| %>
+          <tr>
+            <td class="text-left py-3 px-6"><%= disbursement.disbursement_description %></td>
+            <td class="text-left py-3 px-6"><%= disbursement.custom_disbursement_subtype %></td>
+            <td class="text-left py-3 px-6"><%= disbursement.custom_disbursement_type %></td>
+            <td class="text-left py-3 px-6"><%= number_to_currency(disbursement.disbursement_amount) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
