@@ -134,6 +134,9 @@ DISBURSEMENT_SUBTYPE_MAPPINGS = {
 class Disbursement < ApplicationRecord
   validates :transaction_id, uniqueness: true
 
+  def county_fips
+  end
+
   def self.type_mappings = DISBURSEMENT_TYPE_MAPPINGS
   def self.subtype_mappings = DISBURSEMENT_SUBTYPE_MAPPINGS
 
@@ -141,9 +144,19 @@ class Disbursement < ApplicationRecord
     Disbursement.all.each do |d|
       d.update_attribute(:custom_disbursement_subtype, Disbursement.subtype_mappings[d.disbursement_description])
       d.update_attribute(:custom_disbursement_type, "Consulting") if d.custom_disbursement_subtype&.include?("Consulting")
+
       unless d.custom_disbursement_type
         d.update_attribute(:custom_disbursement_type, Disbursement.type_mappings[d.custom_disbursement_subtype] || d.custom_disbursement_subtype)
       end
+
+      d.update_attribute(:county_fips, d.recipient_zip.to_s[0..4].to_i.to_fips.to_s.rjust(5, "0"))
+    end
+  end
+
+  def self.geo
+    data = Disbursement.where.not(custom_disbursement_type: "Refunds").group(:county_fips).sum(:disbursement_amount)
+    data.map do |fips, amount|
+      { id: fips, value: amount }
     end
   end
 

@@ -1,10 +1,23 @@
 <%= javascript_tag type: 'application/javascript' do -%>
   window.rawDisbursements = <%= raw @disbursements.to_json %>
   window.disbursementHierarchy = <%= raw @hierarchy.to_json %>
+  window.disbursementGeo = <%= raw @geo.to_json %>
 <% end -%>
-<h1>Gloria Johnson - US Senate Race Disbursements - 2024</h1>
-<div class="dashboard">
-  <h2>Budget Breakdown</h2>
-  <p><i>Mouse over to see details, click to see entries</i></p>
-  <div id="sunburst-container"></div>
+<div class="grid">
+  <header class="mb-2">
+    <h1 class="text-2xl font-bold">Gloria Johnson - US Senate Race Disbursements - 2024</h1>
+  </header>
+  <%= link_to('See disbursements list ->', :disbursements)%>
+  <div class="mt-4 dashboard grid">
+    <div>
+      <h2 class="text-lg font-semibold">Budget Breakdown</h2>
+      <p class="mb-1"><i>Mouse over to see details, click to see entries</i></p>
+      <div id="sunburst-container" style="height: 940px; width: 940px"></div>
+    </div>
+    <div>
+      <h2 class="text-lg font-semibold">Contribution Map</h2>
+      <p class="mb-1"><i>Darker color = higher disbursement amount. excludes refunds.</i></p>
+      <div id="geo-container"></div>
+    </div>
+  </div>
 </div>

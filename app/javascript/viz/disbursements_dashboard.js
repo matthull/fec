@@ -1,12 +1,9 @@
-import Disbursements from "viz/disbursements"
 import { createSunburstDiagram } from 'viz/disbursements_sunburst'
-
-function initViz() {
-  new SunburstDiagram()
-}
+import { createGeoPlot } from 'viz/disbursements_geo'
 
 document.addEventListener('DOMContentLoaded', function() {
-  const disbursements = new Disbursements(window.rawDisbursements)
-
-  createSunburstDiagram()
+  if (window.disbursementHierarchy) {
+    createSunburstDiagram()
+    createGeoPlot()
+  }
 })

@@ -40,3 +40,7 @@ pin "robust-predicates" # @3.0.2
 pin "d3-array" # @3.2.4
 pin "d3-path" # @3.1.0
 pin "d3-shape" # @3.2.0
+pin "topojson" # @3.0.2
+pin "topojson-client" # @3.0.0
+pin "topojson-server" # @3.0.0
+pin "topojson-simplify" # @3.0.2

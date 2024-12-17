@@ -1,5 +1,7 @@
 <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
 
+<%= link_to('<- Back to dashboard', :dashboard_index, data: {turbolinks: false})%>
+<p><i>click header to sort</i></p>
 <div class="max-w-7xl mx-auto mt-12">
   <div class="shadow overflow-hidden rounded border-b border-gray-200">
     <table class="min-w-full bg-white">
@@ -15,7 +17,10 @@
             <%= sort_link(column: "custom_disbursement_type", label: "Type") %>
           </th>
           <th>
-            <span>Amount</span>
+            <%= sort_link(column: "disbursement_amount", label: "Amount") %>
+          </th>
+          <th>
+            <%= sort_link(column: "recipient_city", label: "Recipient City") %>
           </th>
         </tr>
       </thead>
@@ -27,6 +32,7 @@
             <td class="text-left py-3 px-6"><%= disbursement.custom_disbursement_subtype %></td>
             <td class="text-left py-3 px-6"><%= disbursement.custom_disbursement_type %></td>
             <td class="text-left py-3 px-6"><%= number_to_currency(disbursement.disbursement_amount) %></td>
+            <td class="text-left py-3 px-6"><%= disbursement.recipient_city %></td>
           </tr>
         <% end %>
       </tbody>
