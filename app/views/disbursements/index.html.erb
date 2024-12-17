@@ -20,6 +20,9 @@
             <%= sort_link(column: "disbursement_amount", label: "Amount") %>
           </th>
           <th>
+            <%= sort_link(column: "recipient_name", label: "Recipient") %>
+          </th>
+          <th>
             <%= sort_link(column: "recipient_city", label: "Recipient City") %>
           </th>
         </tr>
@@ -32,6 +35,7 @@
             <td class="text-left py-3 px-6"><%= disbursement.custom_disbursement_subtype %></td>
             <td class="text-left py-3 px-6"><%= disbursement.custom_disbursement_type %></td>
             <td class="text-left py-3 px-6"><%= number_to_currency(disbursement.disbursement_amount) %></td>
+            <td class="text-left py-3 px-6"><%= disbursement.recipient_name %></td>
             <td class="text-left py-3 px-6"><%= disbursement.recipient_city %></td>
           </tr>
         <% end %>
