@@ -140,8 +140,36 @@ class Disbursement < ApplicationRecord
   def self.set_custom_disbursement_types!
     Disbursement.all.each do |d|
       d.update_attribute(:custom_disbursement_subtype, Disbursement.subtype_mappings[d.disbursement_description])
-      d.update_attribute(:custom_disbursement_type, "Consulting") if d.custom_disbursement_subtype.include?("Consulting")
-      d.update_attribute(:custom_disbursement_type, Disbursement.type_mappings[d.custom_disbursement_subtype] || d.custom_disbursement_subtype)
+      d.update_attribute(:custom_disbursement_type, "Consulting") if d.custom_disbursement_subtype&.include?("Consulting")
+      unless d.custom_disbursement_type
+        d.update_attribute(:custom_disbursement_type, Disbursement.type_mappings[d.custom_disbursement_subtype] || d.custom_disbursement_subtype)
+      end
     end
+  end
+
+  # Create a structure of disbursement data based on type > subtype > category hierarchy
+  def self.generate_hierarchy
+    disbursements = Disbursement.where.not(custom_disbursement_type: nil).group(:custom_disbursement_type, :custom_disbursement_subtype, :disbursement_description).sum(:disbursement_amount)
+
+    subtypes = {}
+    types = {}
+
+    disbursements.each do |keys, amount|
+      type, subtype, category = keys
+      subtypes[[ subtype, type ]] ||= []
+      subtypes[[ subtype, type ]] << { name: category, value: amount }
+    end
+
+    subtypes.each do |keys, children|
+      subtype, type = keys
+      types[type] ||= []
+      types[type] << { name: subtype, children: }
+    end
+
+    {
+      name: "disbursements", children: types.map do |type, children|
+      { name: type, children: }
+      end
+    }
   end
 end

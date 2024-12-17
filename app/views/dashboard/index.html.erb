@@ -1,9 +1,10 @@
 <%= javascript_tag type: 'application/javascript' do -%>
   window.rawDisbursements = <%= raw @disbursements.to_json %>
+  window.disbursementHierarchy = <%= raw @hierarchy.to_json %>
 <% end -%>
 <h1>Gloria Johnson - US Senate Race Disbursements - 2024</h1>
 <div class="dashboard">
-  <div id="sankey-container"></div>
+  <div id="sunburst-container"></div>
 </div>
 
 <% @type_stats.sort_by(&:last).reverse.each do |stat| -%>

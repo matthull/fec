@@ -2,7 +2,7 @@ require "csv"
 
 class LoadDisbursements
   def self.run
-    filename = "tmp/gloria_johnson_schedule_b_2024.csv"
+    filename = "data/gloria_johnson_schedule_b_2024.csv"
     csv_text = File.read(filename)
     csv = CSV.parse(csv_text, headers: true)
     csv.each do |row|
