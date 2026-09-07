@@ -55,7 +55,7 @@ module.exports = {
     'vue/max-attributes-per-line': 'off', // Conflicts with prettier
     'vue/no-v-for-template-key-on-child': 'off', // the compiler breaks when this rule is satisfied and :key is added to a template
     // note we DO NOT obey the linting here as it breaks per:
-    // https://linear.app/userevidence/issue/UE-1168/issue-with-results-page-filters-freezing-the-page
+    // (upstream issue: enabling this rule caused the results page filters to freeze)
     // setting this to 'warn' does not prevent the autosave from correcting it
     'vue/no-deprecated-v-bind-sync': 'off',
   },
